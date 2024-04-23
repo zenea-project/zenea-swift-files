@@ -3,9 +3,8 @@ import NIOFileSystem
 import Zenea
 
 extension BlockFS {
-    public func putBlock<Bytes>(content: Bytes) async -> Result<Block, Block.PutError> where Bytes: AsyncSequence, Bytes.Element == Data {
+    public func putBlock(content: Data) async -> Result<Block, Block.PutError> {
         do {
-            guard let content = try? await content.read() else { return .failure(.unable) }
             guard content.count <= Block.maxBytes else { return .failure(.overflow) }
             
             let block = Block(content: content)
