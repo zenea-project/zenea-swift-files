@@ -1,10 +1,10 @@
-import Foundation
 import NIOFileSystem
-import Crypto
 import Zenea
 
-public class BlockFS: BlockStorage {
+public struct BlockFS: BlockStorage {
     public var zeneaURL: FilePath
+    
+    public var description: String { self.zeneaURL.string }
     
     public init(_ path: String) {
         self.zeneaURL = FilePath(path)

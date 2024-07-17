@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.64.0"),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "3.3.0"),
-        .package(url: "https://github.com/zenea-project/zenea-swift.git", from: "3.0.0")
+        .package(url: "https://github.com/zenea-project/zenea-swift.git", from: "3.0.2")
     ],
     targets: [
         .target(

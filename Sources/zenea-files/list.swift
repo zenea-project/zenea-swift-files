@@ -11,7 +11,7 @@ extension BlockFS {
             
             let files1 = try await scanDir(url)
             
-            for try await file1 in files1 {
+            for file1 in files1 {
                 guard let (bytes1, files2) = await processIntermediate(file1, bytes: []) else { continue }
                 
                 for file2 in files2 {

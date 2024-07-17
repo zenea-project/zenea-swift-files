@@ -25,7 +25,7 @@ internal func processIntermediate(_ entry: DirectoryEntry, bytes: [UInt8]) async
     
     var contents: [DirectoryEntry] = []
     do {
-        for try await file in try await scanDir(entry.path) {
+        for file in try await scanDir(entry.path) {
             contents.append(file)
         }
     } catch {
