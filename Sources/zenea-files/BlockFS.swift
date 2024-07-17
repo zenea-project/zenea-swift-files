@@ -1,16 +1,21 @@
 import NIOFileSystem
 import Zenea
 
-public struct BlockFS: BlockStorage {
-    public var zeneaURL: FilePath
+public struct BlockFS: BlockStorage, Hashable, Sendable, Codable {
+    public var zeneaPath: String
     
-    public var description: String { self.zeneaURL.string }
+    public var zeneaURL: FilePath {
+        get { FilePath(zeneaPath) }
+        set { zeneaPath = newValue.string }
+    }
+    
+    public var description: String { self.zeneaPath }
     
     public init(_ path: String) {
-        self.zeneaURL = FilePath(path)
+        self.zeneaPath = path
     }
     
     public init(_ path: FilePath) {
-        self.zeneaURL = path
+        self.zeneaPath = path.string
     }
 }
